@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/toascii
+toascii.so
+toascii.dylib
+toascii.dll
+toascii.a
+toascii.lib
+toascii-test-*
+*.exe
+*.o
+*.obj
+*.lst
