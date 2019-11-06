@@ -1,6 +1,3 @@
-# DO NOT USE
-underlying library is buggy.
-
 # toascii
 Featureless CLI wrapper of the [stringex.unidecode](https://code.dlang.org/packages/stringex) dub module.
 
