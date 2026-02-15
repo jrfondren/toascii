@@ -1,7 +1,7 @@
 import std.stdio : File, stderr, stdin, stdout;
 import std.format : format;
 import std.process : thisProcessID;
-import std.file : rename, remove;
+import std.file : rename, remove, getAttributes, setAttributes;
 import stringex.unidecode : unidecode;
 
 bool copyLines(File fin, File fout, string function(string) convert) {
@@ -23,15 +23,17 @@ int main(string[] args) {
     case 2:
         bool res;
         string tmpName = format("%s.out.%d", args[1], thisProcessID);
+        uint attr = args[1].getAttributes;
         {
             File fin = File(args[1], "r");
             File fout = File(tmpName, "w");
+            tmpName.setAttributes(attr);
             res = copyLines(fin, fout, &unidecode);
         }
         if (res) {
             tmpName.rename(args[1]);
         } else {
-            tmpName.remove();
+            tmpName.remove;
             stderr.writeln("No change to input file.");
         }
         break;
