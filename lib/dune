@@ -3,7 +3,7 @@
  (libraries uuseg))
 
 (rule
- (mode promote)
+ (mode fallback)
  (deps %{project_root}/tools/dump_stringex.d)
  (action
   (with-stdout-to
