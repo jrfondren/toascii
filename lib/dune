@@ -1,0 +1,11 @@
+(library
+ (name toascii)
+ (libraries uuseg))
+
+(rule
+ (mode promote)
+ (deps %{project_root}/tools/dump_stringex.d)
+ (action
+  (with-stdout-to
+   replacements.ml
+   (bash "%{project_root}/tools/dump_stringex.d | ocamlformat --impl -"))))

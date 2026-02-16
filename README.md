@@ -1,21 +1,37 @@
 # toascii
-Featureless CLI wrapper of the [stringex.unidecode](https://code.dlang.org/packages/stringex) dub module.
+Unix filter. Formerly a D CLI wrapper of
+[stringex.unidecode](https://code.dlang.org/packages/stringex), but rewritten
+in OCaml after I tried to make the D version *slightly* better and encountered
+egregious limits in Phobos's support for the Unix API.
 
-Major defects: silently clobbers temporary files; doesn't preserve file
-ownership; vulnerable to race conditions when preserving file mode. The last
-two are defects of Phobos and the first is my giving up after realizing that
-I'd need C wrappers to avoid these defects of Phobos.
+D is still present in tools/dump\_stringex.d which is a script, using dub, to
+produce an OCaml-formatted version of the replacement table used by that same D
+library.
+
+D is not needed to build or use this code as the output of that script is
+checked in and the dune rule is using
+[https://dune.readthedocs.io/en/stable/reference/dune/rule.html#modes](mode
+fallback).
 
 # usage
+toascii is a unix filter, so
+
 ```sh
 $ toascii file-containing-Unicode
 # the file is now definitely poorly named
+
+$ cat file | toascii
+
+$ toascii
+(paste unicode, get ascii)
 ```
 
 # build
 ```sh
-dub build
+dune build --release
 ```
 
 # install
-Place the produced 'toascii' binary in your PATH.
+```sh
+dune install
+```
