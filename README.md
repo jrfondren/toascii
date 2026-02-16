@@ -10,8 +10,7 @@ library.
 
 D is not needed to build or use this code as the output of that script is
 checked in and the dune rule is using
-[https://dune.readthedocs.io/en/stable/reference/dune/rule.html#modes](mode
-fallback).
+[mode fallback](https://dune.readthedocs.io/en/stable/reference/dune/rule.html#modes).
 
 # usage
 toascii is a unix filter, so
